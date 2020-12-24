@@ -1,25 +1,32 @@
-import logo from './logo.svg';
-import './App.css';
+import React, { useEffect , createContext,useReducer,useContext} from 'react';
+import {BrowserRouter, Route, Switch, useHistory} from 'react-router-dom';
+import Signup from './components/signup'
+import Login from './components/sigin'
+import './App.css'
+import M from  'materialize-css/dist/js/materialize.min.js';
+import Reset from './components/reset';
+import NewPassword from './components/newpassword';
+import Dashboard from './components/Dashboard';
 
-function App() {
+const Routing = () => {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+     <Switch>
+     <Route exact path='/'> <Signup /> </Route>
+      <Route path='/signin'> <Login /> </Route>
+      <Route path='/signup'> <Signup /> </Route>
+      <Route path='/reset'> <Reset /> </Route>
+      <Route path='/newpassword'> <NewPassword /> </Route>
+      <Route path='/dashboard'> <Dashboard /> </Route>
+    </Switch>
+  
+    )
+}
+function App() {
+  
+  return (
+    <BrowserRouter >
+     <Routing />
+     </BrowserRouter>
   );
 }
-
 export default App;
